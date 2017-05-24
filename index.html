@@ -256,32 +256,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>记录 kafka 相关命令<br>目录 %kafuka% = d:\kafka_2.11-0.10.0.1</p>
-<h1 id="开启服务-（-kafuka-下）"><a href="#开启服务-（-kafuka-下）" class="headerlink" title="开启服务  （%kafuka%下）"></a>开启服务  （%kafuka%下）</h1><blockquote>
-<p>.\bin\windows\kafka-server-start.bat .\config\server.properties</p>
-</blockquote>
-<h1 id="以下下在目录-kafuka-bin-windows-运行命令"><a href="#以下下在目录-kafuka-bin-windows-运行命令" class="headerlink" title="以下下在目录 %kafuka%\bin\windows\ 运行命令"></a>以下下在目录 %kafuka%\bin\windows\ 运行命令</h1><h2 id="创建topic"><a href="#创建topic" class="headerlink" title="创建topic"></a>创建topic</h2><blockquote>
-<p>kafka-topics.bat –create –zookeeper localhost:2181 –replication-factor 1 –partitions 1 –topic topic名称</p>
-</blockquote>
-<h2 id="为topic增加partition"><a href="#为topic增加partition" class="headerlink" title="为topic增加partition"></a>为topic增加partition</h2><blockquote>
-<p>kafka-topics.bat –zookeeper 127.0.0.1:2181 –alter –partitions 数量 –topic opic名称</p>
-</blockquote>
-<h2 id="删除topic"><a href="#删除topic" class="headerlink" title="删除topic"></a>删除topic</h2><blockquote>
-<p>kafka-run-class.bat  kafka.admin.DeleteTopicCommand –topic topic名称 –zookeeper 127.0.0.1:2181<br>kafka-topics.bat  –zookeeper localhost:2181 –delete –topic topic名称</p>
-</blockquote>
-<h2 id="打开topic生产者"><a href="#打开topic生产者" class="headerlink" title="打开topic生产者"></a>打开topic生产者</h2><blockquote>
-<p>kafka-console-producer.bat –broker-list localhost:9092 –topic topic名称</p>
-</blockquote>
-<h2 id="打开topic消费者"><a href="#打开topic消费者" class="headerlink" title="打开topic消费者"></a>打开topic消费者</h2><blockquote>
-<p>kafka-console-consumer.bat –zookeeper localhost:2181 –topic topic名称</p>
-</blockquote>
-<h2 id="查看所有top"><a href="#查看所有top" class="headerlink" title="查看所有top"></a>查看所有top</h2><blockquote>
-<p>kafka-topics.bat –list –zookeeper 127.0.0.1:2181</p>
-</blockquote>
-<h2 id="查看单个top信息"><a href="#查看单个top信息" class="headerlink" title="查看单个top信息"></a>查看单个top信息</h2><blockquote>
-<p>kafka-topics.bat –zookeeper 127.0.0.1:2181  -describe -topic opic名称</p>
-</blockquote>
-
+              <p>记录 kafka 相关命令<br>目录 %kafuka% = d:\kafka_2.11-0.10.0.1</p>
+          
       
       
     </div>
@@ -295,6 +271,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/code/">code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a  href="/2017/05/24/windos下kafka命令/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
