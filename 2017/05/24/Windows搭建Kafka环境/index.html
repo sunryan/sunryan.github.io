@@ -6,12 +6,13 @@
   <title>Windows搭建Kafka环境 | Ryan Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Windows上搭建Kafka运行环境">
+<meta name="keywords" content="kafka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows搭建Kafka环境">
 <meta property="og:url" content="https://sunryan.github.io/2017/05/24/Windows搭建Kafka环境/index.html">
 <meta property="og:site_name" content="Ryan Blog">
 <meta property="og:description" content="Windows上搭建Kafka运行环境">
-<meta property="og:updated_time" content="2017-05-24T03:56:30.635Z">
+<meta property="og:updated_time" content="2017-05-24T06:03:11.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows搭建Kafka环境">
 <meta name="twitter:description" content="Windows上搭建Kafka运行环境">
@@ -148,7 +149,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <a href="/tags/code/" style="font-size: 10px;">code</a> <a href="/tags/kafka/" style="font-size: 20px;">kafka</a>
                     </div>
                 </section>
                 
@@ -255,6 +256,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kafka/">kafka</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -263,36 +268,40 @@
       
           
         <h1 id="Windows上搭建Kafka运行环境"><a href="#Windows上搭建Kafka运行环境" class="headerlink" title="Windows上搭建Kafka运行环境"></a>Windows上搭建Kafka运行环境</h1><a id="more"></a>
-<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><pre><code>自行百度，这里不说了
-</code></pre><h2 id="安装Zookeeper"><a href="#安装Zookeeper" class="headerlink" title="安装Zookeeper"></a>安装Zookeeper</h2><p>Kafka的运行依赖于Zookeeper，所以在运行Kafka之前我们需要安装并运行Zookeeper</p>
-<ul>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><blockquote>
+<p>自行百度，这里不说了</p>
+</blockquote>
+<h2 id="安装Zookeeper"><a href="#安装Zookeeper" class="headerlink" title="安装Zookeeper"></a>安装Zookeeper</h2><blockquote>
+<p>Kafka的运行依赖于Zookeeper，所以在运行Kafka之前我们需要安装并运行Zookeeper</p>
+</blockquote>
+<ol>
 <li>下载安装文件： <a href="http://zookeeper.apache.ord/releases.html" target="_blank" rel="external">http://zookeeper.apache.ord/releases.html</a></li>
 <li>解压文件（本文解压到 d:\zookeeper-3.4.8）</li>
 <li>打开d:\zookeeper-3.4.8\conf，把zoo_sample.cfd重命名成zoo.cfd</li>
 <li>从文本编辑器里打开zoo.cfd</li>
 <li>把dataDir的值改成“d:\zookeeper-3.4.8\data”</li>
-<li><p>添加如下系统变量：</p>
-<p>   ZOOKEEPER_HOME: d:\zookeeper-3.4.8<br>   Path: 在现有的值后面添加 “;%ZOOKEEPER_HOME%\bin;”</p>
-</li>
-<li><p>运行Zookeeper: 打开cmd然后执行</p>
-</li>
-</ul>
-<h2 id="安装并运行Kafka"><a href="#安装并运行Kafka" class="headerlink" title="安装并运行Kafka"></a>安装并运行Kafka</h2><ul>
+<li>添加如下系统变量：</li>
+<li>ZOOKEEPER_HOME: d:\zookeeper-3.4.8</li>
+<li>Path: 在现有的值后面添加 “;%ZOOKEEPER_HOME%\bin;”</li>
+<li>运行Zookeeper: 打开cmd然后执行</li>
+</ol>
+<h2 id="安装并运行Kafka"><a href="#安装并运行Kafka" class="headerlink" title="安装并运行Kafka"></a>安装并运行Kafka</h2><ol>
 <li>下载安装文件： <a href="http://kafka.apache.ord/downloads.html" target="_blank" rel="external">http://kafka.apache.ord/downloads.html</a></li>
 <li>解压文件（本文解压到 d:\kafka_2.11-0.10.0.1）</li>
 <li>打开d:\kafka_2.11-0.10.0.1\confid</li>
 <li>从文本编辑器里打开 server.properties</li>
-<li>把 lod.dirs的值改成 d:\kafka_2.11-0.10.0.1\kafka-lods</li>
+<li>把 lod.dirs的值改成 d:\kafka_2.11-0.10.0.1\kafka-logs</li>
 <li>打开cmd</li>
 <li>进入kafka文件目录: cd d:\kafka_2.11-0.10.0.1\</li>
-<li><p>输入并执行以打开kafka:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.\bin\windows\kafka-server-start.bat .\confid\server.properties</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="创建topics"><a href="#创建topics" class="headerlink" title="创建topics"></a>创建topics</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> d:\kafka_2.11-0.10.0.1\bin\windows</div><div class="line">kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<li>输入并执行以打开kafka:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">.\bin\windows\kafka-server-start.bat .\config\server.properties</div></pre></td></tr></table></figure>
+<h2 id="创建topics"><a href="#创建topics" class="headerlink" title="创建topics"></a>创建topics</h2><p>创建一个topics test<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> d:\kafka_2.11-0.10.0.1\bin\windows</div><div class="line">kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
 <h2 id="打开一个Producer"><a href="#打开一个Producer" class="headerlink" title="打开一个Producer"></a>打开一个Producer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> d:\kafka_2.11-0.10.0.1\bin\windows</div><div class="line">kafka-console-producer.bat --broker-list localhost:9092 --topic <span class="built_in">test</span></div></pre></td></tr></table></figure>
 <h2 id="打开一个Consumer"><a href="#打开一个Consumer" class="headerlink" title="打开一个Consumer"></a>打开一个Consumer</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> d:\kafka_2.11-0.10.0.1\bin\windows</div><div class="line">kafka-console-consumer.bat --zookeeper localhost:2181 --topic <span class="built_in">test</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>然后就可以在Producer控制台窗口输入消息了。<br>在消息输入过后，很快Consumer窗口就会显示出Producer发送的消息。</p>
+</blockquote>
 
       
       
@@ -305,7 +314,7 @@
         <p><span>本文标题:</span><a href="/2017/05/24/Windows搭建Kafka环境/">Windows搭建Kafka环境</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 ryan 的个人博客">ryan</a></p>
         <p><span>发布时间:</span>2017年05月24日 - 11时38分</p>
-        <p><span>最后更新:</span>2017年05月24日 - 11时56分</p>
+        <p><span>最后更新:</span>2017年05月24日 - 14时03分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/05/24/Windows搭建Kafka环境/" title="Windows搭建Kafka环境">https://sunryan.github.io/2017/05/24/Windows搭建Kafka环境/</a>
             <span class="copy-path" data-clipboard-text="原文: https://sunryan.github.io/2017/05/24/Windows搭建Kafka环境/　　作者: ryan" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -318,6 +327,20 @@
     </div>
 
 
+
+<nav id="article-nav">
+  
+    <a href="/2017/05/24/windos下kafka命令/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          windos下kafka命令
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
 </article>
@@ -388,7 +411,7 @@
     
         <section class="youyan" id="comments">
   <div id="uyan_frame"></div>
-  <script src="http://v2.uyan.cc/code/uyan.js?uid=null"></script>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2134390"></script>
 </section>
 
     
@@ -397,14 +420,16 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/05/24/windos下kafka命令/" title="上一篇: windos下kafka命令">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
             <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/Windows搭建Kafka环境/">Windows搭建Kafka环境</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/windos下kafka命令/">windos下kafka命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/Windows搭建Kafka环境/">Windows搭建Kafka环境</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
